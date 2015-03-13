@@ -21,7 +21,11 @@ public class ExtremeStartup extends HttpServlet {
 
     String answer(String parameter) {
         if (parameter == null)
-            return "team name";
+            return "The FooBars";
+        
+        else if ("what is your name".equals(parameter)) {
+        	return "The FooBars";
+        }
 
         Matcher additionMatcher = Pattern.compile(".*what is the sum of (\\d+) and (\\d+)").matcher(parameter);
         if (additionMatcher.matches()) {
@@ -29,7 +33,7 @@ public class ExtremeStartup extends HttpServlet {
                     + Integer.parseInt(additionMatcher.group(2)));
         }
 
-        return "team name";
+        return "The FooBars";
     }
 
 }
