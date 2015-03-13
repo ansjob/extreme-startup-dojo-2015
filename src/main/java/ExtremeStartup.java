@@ -32,6 +32,12 @@ public class ExtremeStartup extends HttpServlet {
             return String.valueOf(Integer.parseInt(additionMatcher.group(1))
                     + Integer.parseInt(additionMatcher.group(2)));
         }
+        Matcher sumMatcher = Pattern.compile(".*what is (\\d+) plus (\\d+)").matcher(parameter);
+        if (sumMatcher.matches()) {
+            return String.valueOf(Integer.parseInt(additionMatcher.group(1))
+                    + Integer.parseInt(additionMatcher.group(2)));
+        }
+
 
         return "The FooBars";
     }
