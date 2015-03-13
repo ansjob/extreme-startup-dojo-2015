@@ -9,7 +9,7 @@ public class ExtremeStartupTest {
 
     @Test
     public void should_accept_missing_input() {
-        assertThat(server.answer(null), equalTo("team name"));
+        assertThat(server.answer(null), equalTo("The FooBars"));
     }
 
     @Test

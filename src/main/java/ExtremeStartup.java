@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ExtremeStartup extends HttpServlet {
 
+	static CustomMatcherRegistry registry = new CustomMatcherRegistry();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String parameter = req.getParameter("q");
@@ -27,24 +29,7 @@ public class ExtremeStartup extends HttpServlet {
         	return "The FooBars";
         }
 
-        Matcher sumMatcher = Pattern.compile(".*what is (\\d+) plus (\\d+)").matcher(parameter);
-        if (sumMatcher.matches()) {
-            return String.valueOf(Integer.parseInt(sumMatcher.group(1))
-                    + Integer.parseInt(sumMatcher.group(2)));
-        }
-        
-        Matcher additionMatcher = Pattern.compile(".*what is the sum of (\\d+) and (\\d+)").matcher(parameter);
-        if (additionMatcher.matches()) {
-            return String.valueOf(Integer.parseInt(additionMatcher.group(1))
-                    + Integer.parseInt(additionMatcher.group(2)));
-        }
-        
-        Matcher romanMatcher = Pattern.compile(".*Convert (\\d+) into Roman Numerals").matcher(parameter);
-        if (romanMatcher.matches()) {
-        	return RomanNumberConverter.convertToRoman(Integer.parseInt(romanMatcher.group(1)));
-        }
-
-        return "The FooBars";
+        return registry.getMatch(parameter);
     }
 
 }
