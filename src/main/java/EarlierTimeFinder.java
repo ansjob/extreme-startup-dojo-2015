@@ -25,6 +25,6 @@ public class EarlierTimeFinder {
 	}
 	
 	public static void main(String[] args){
-		System.out.println(findEarliest("9am, 10pm, 10am, 6am, 7am, 5am, 7pm, 2pm, 9pm"));
+		System.out.println(findEarliest(" 9pm, 7am"));
 	}
 }

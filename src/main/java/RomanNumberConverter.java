@@ -53,7 +53,16 @@ public class RomanNumberConverter {
 		return result;
 	}
 	
+	public static Integer convertToNumber(String x){
+		for(int i=1; i<4000; i++){
+			if(x.equals(convertToRoman(i))){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
 	public static void main(String[] args){
-		System.out.println(convertToRoman(8));
+		System.out.println(convertToNumber("IX"));
 	}
 }
