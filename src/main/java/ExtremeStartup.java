@@ -26,7 +26,9 @@ public class ExtremeStartup extends HttpServlet {
         else if ("what is your name".equals(parameter)) {
         	return "The FooBars";
         }
+        
         return registry.getMatch(parameter);
+
     }
 
 }

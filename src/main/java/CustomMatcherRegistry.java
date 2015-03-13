@@ -44,6 +44,24 @@ public class CustomMatcherRegistry {
 				return EarlierTimeFinder.findEarliest(groups.get(1));
 			}
 		});
+		
+		register(".*What is ([A-Z]+) in decimal", new CustomMatcherHandler() {
+
+			@Override
+			public String getResponse(List<String> groups) {
+	        	return RomanNumberConverter.convertToNumber(groups.get(1)).toString();
+			}
+			
+		});
+		
+		register(".*what is (\\d+) multiplied by (\\d+)", new CustomMatcherHandler() {
+			
+			@Override
+			public String getResponse(List<String> groups) {
+				return String.valueOf(Integer.parseInt(groups.get(1))
+	                    * Integer.parseInt(groups.get(2)));
+			}
+		});
 			
 	}
 	
