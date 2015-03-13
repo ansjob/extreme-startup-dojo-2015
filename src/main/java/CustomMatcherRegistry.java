@@ -62,7 +62,37 @@ public class CustomMatcherRegistry {
 	                    * Integer.parseInt(groups.get(2)));
 			}
 		});
+
+		register("which of the following numbers is the largest:(.*)$", new CustomMatcherHandler() {
+
+			@Override
+			public String getResponse(List<String> groups) {
+				String allthem = groups.get(1);
+				String[] splitted = allthem.split(",| ");
+				int max = Integer.MIN_VALUE;
+				for (String next : splitted) {
+					try {
+						int nextNum = Integer.parseInt(next);
+						max = Math.max(max, nextNum);
+					} catch (NumberFormatException e) {
+						// ignore junk
+					}
+				}
+				return String.valueOf(max);
+			}
 			
+		});
+
+		register("which of the following numbers is the largest: ((\\d+),[^0-9]*)+$", new CustomMatcherHandler() {
+
+			@Override
+			public String getResponse(List<String> groups) {
+				return String.valueOf(groups.get(1));
+			}
+			
+		});
+
+		
 	}
 	
 	public void register(String regex, CustomMatcherHandler handler) {
