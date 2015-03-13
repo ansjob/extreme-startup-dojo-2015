@@ -38,7 +38,11 @@ public class ExtremeStartup extends HttpServlet {
             return String.valueOf(Integer.parseInt(additionMatcher.group(1))
                     + Integer.parseInt(additionMatcher.group(2)));
         }
-
+        
+        Matcher romanMatcher = Pattern.compile(".*Convert (\\d+) into Roman Numerals").matcher(parameter);
+        if (romanMatcher.matches()) {
+        	return RomanNumberConverter.convertToRoman(Integer.parseInt(romanMatcher.group(1)));
+        }
 
         return "The FooBars";
     }
