@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.common.collect.Lists;
 
 public class ExtremeStartup extends HttpServlet {
 
@@ -42,6 +45,15 @@ public class ExtremeStartup extends HttpServlet {
         Matcher romanMatcher = Pattern.compile(".*Convert (\\d+) into Roman Numerals").matcher(parameter);
         if (romanMatcher.matches()) {
         	return RomanNumberConverter.convertToRoman(Integer.parseInt(romanMatcher.group(1)));
+        }
+        
+        Matcher timesMatcher = Pattern.compile(".*which of the following is earliest: .*").matcher(parameter);
+        if (timesMatcher.matches()) {
+        	Matcher timesMatches = Pattern.compile("((\\d+a|pm").matcher(parameter);
+        	List<String> times = Lists.newArrayList();
+        	while(timesMatches.find()) {
+        		times.add(timesMatches.group());
+        	}
         }
 
         return "The FooBars";
