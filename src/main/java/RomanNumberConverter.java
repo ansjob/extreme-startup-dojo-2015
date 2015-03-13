@@ -54,6 +54,6 @@ public class RomanNumberConverter {
 	}
 	
 	public static void main(String[] args){
-		System.out.println(convertToRoman(49));
+		System.out.println(convertToRoman(8));
 	}
 }
