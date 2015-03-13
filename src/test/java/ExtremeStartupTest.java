@@ -1,5 +1,6 @@
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -19,5 +20,7 @@ public class ExtremeStartupTest {
     @Test
     public void should_plus_numbers() {
         assertThat(server.answer("what is 14 plus 4"), equalTo("18"));
-    }
+
+    }  
+
 }

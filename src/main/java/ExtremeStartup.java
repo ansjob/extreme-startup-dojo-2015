@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.common.collect.Lists;
 
 public class ExtremeStartup extends HttpServlet {
 
@@ -34,7 +37,11 @@ public class ExtremeStartup extends HttpServlet {
             return String.valueOf(Integer.parseInt(additionMatcher.group(1))
                     + Integer.parseInt(additionMatcher.group(2)));
         }
-
+        Matcher multi = Pattern.compile(".*what is the sum of (\\d+) and (\\d+)").matcher(parameter);
+        if (multi.matches()) {
+            return String.valueOf(Integer.parseInt(multi.group(1))
+                    * Integer.parseInt(multi.group(2)));
+        }        
 
         return "team name";
     }
