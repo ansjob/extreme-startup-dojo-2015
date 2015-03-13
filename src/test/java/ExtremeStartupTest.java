@@ -16,4 +16,8 @@ public class ExtremeStartupTest {
     public void should_add_numbers() {
         assertThat(server.answer("what is the sum of 14 and 4"), equalTo("18"));
     }
+    @Test
+    public void should_plus_numbers() {
+        assertThat(server.answer("what is 14 plus 4"), equalTo("18"));
+    }
 }
